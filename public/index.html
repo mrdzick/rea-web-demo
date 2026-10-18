@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Toko Demo REA</title>
+  <style>
+    :root { --bg:#0e1420; --card:#161e2e; --ink:#e8ecf4; --mute:#8a96ad; --green:#3ddc84; --coral:#f97362; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background:var(--bg); color:var(--ink); min-height:100vh; display:flex; align-items:center; justify-content:center; padding:1rem; }
+    .wrap { width:100%; max-width:420px; }
+    .card { background:var(--card); border-radius:14px; padding:1.5rem; }
+    h1 { font-size:1.3rem; margin:0 0 0.25rem; }
+    .sub { color:var(--mute); font-size:0.85rem; margin:0 0 1.25rem; }
+    label { display:block; font-size:0.8rem; color:var(--mute); margin:0.75rem 0 0.25rem; }
+    input, select { width:100%; padding:0.6rem 0.75rem; border-radius:8px; border:1px solid #2a3650; background:#0a0f18; color:var(--ink); font-size:0.95rem; }
+    button { width:100%; margin-top:1rem; padding:0.7rem; border:0; border-radius:8px; background:var(--green); color:#0a0f18; font-weight:600; font-size:0.95rem; cursor:pointer; }
+    .err { color:var(--coral); font-size:0.8rem; min-height:1rem; margin-top:0.5rem; }
+    .hint { color:var(--mute); font-size:0.75rem; margin-top:1rem; line-height:1.5; }
+    #ringkasan { background:#0a0f18; border-radius:8px; padding:0.9rem; margin-top:1rem; font-size:0.9rem; line-height:1.7; }
+    .badge { display:none; background:var(--green); color:#0a0f18; font-size:0.7rem; font-weight:700; padding:0.2rem 0.5rem; border-radius:999px; }
+    #hasil { color:var(--green); font-size:0.85rem; margin-top:0.75rem; min-height:1rem; }
+    #toko-view { display:none; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <!-- LOGIN -->
+    <div class="card" id="login-view">
+      <h1>Toko Demo REA</h1>
+      <p class="sub">Target reverse engineering untuk sharing session</p>
+      <form id="login-form">
+        <label for="username">Username</label>
+        <input id="username" type="text" autocomplete="username" value="demo" />
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="current-password" value="demo123" />
+        <button type="submit">Masuk</button>
+        <div class="err" id="login-error"></div>
+      </form>
+      <p class="hint">Akun demo: <b>demo / demo123</b> (free) &middot; <b>pro / pro123</b> (premium)</p>
+    </div>
+
+    <!-- TOKO -->
+    <div class="card" id="toko-view">
+      <h1>Keranjang <span class="badge" id="premium-badge">PREMIUM</span></h1>
+      <p class="sub">Masuk sebagai <span id="siapa"></span></p>
+
+      <label for="produk">Produk</label>
+      <select id="produk"></select>
+
+      <label for="qty">Jumlah</label>
+      <input id="qty" type="number" min="1" value="12" />
+
+      <label for="promo">Kode promo (opsional)</label>
+      <input id="promo" type="text" placeholder="mis. HEMAT10" />
+
+      <div id="ringkasan"></div>
+      <button id="checkout">Checkout</button>
+      <div id="hasil"></div>
+    </div>
+  </div>
+
+  <script src="bundle.min.js"></script>
+</body>
+</html>
